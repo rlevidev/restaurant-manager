@@ -57,7 +57,7 @@ CREATE TABLE order_itens (
     total_price DECIMAL(10, 2) NOT NULL CHECK (total_price >= 0),
     observations TEXT,
     status VARCHAR(20) NOT NULL DEFAULT 'PENDING',
-    CHECK (status IN ('PENDING', 'IN PREPARATION', 'READY',  'DELIVERED', 'CANCELLED'))
+    CHECK (status IN ('PENDING', 'IN_PREPARATION', 'READY',  'DELIVERED', 'CANCELLED'))
 );
 
 CREATE INDEX idx_order_itens_order ON order_itens(order_id);
@@ -77,7 +77,7 @@ CREATE TABLE payments (
     created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
     updated_at TIMESTAMP,
     CHECK(payment_method IN ('CREDIT_CARD', 'DEBIT_CARD', 'PIX', 'CASH'))
-    CHECK(status IN ('PENDING', 'APPROVED', 'REJECTED', 'CANCELED'))
+    CHECK(status IN ('PENDING', 'APPROVED', 'REJECTED', 'CANCELLED'))
 );
 
 CREATE INDEX idx_payments_order ON payments(order_id);
@@ -91,7 +91,6 @@ CREATE TABLE order_closing (
     subtotal DECIMAL(10, 2) NOT NULL CHECK (subtotal >= 0),
     service_charge DECIMAL(10, 2) NOT NULL DEFAULT 0 CHECK (service_charge >= 0),
     discount DECIMAL(10, 2) NOT NULL DEFAULT 0 CHECK (discount >= 0),
-    delivery_fee DECIMAL(10, 2) NOT NULL DEFAULT 0 CHECK (delivery_fee >= 0),
     total DECIMAL(10, 2) NOT NULL CHECK (total >= 0),
     closed_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
 );
