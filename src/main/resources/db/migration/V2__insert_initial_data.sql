@@ -13,18 +13,18 @@ VALUES
     ('Beverages'),
     ('Desserts');
 
-INSERT INTO products (category_id, name, description, price, preparation_time_minutes)
+INSERT INTO products (categories_id, name, description, price, preparation_time_minutes)
 SELECT id, 'French fries', 'Portion of french fries', 19.90, 20
 FROM categories_products WHERE name = 'Appetizers';
 
-INSERT INTO products (category_id, name, description, price, preparation_time_minutes)
+INSERT INTO products (categories_id, name, description, price, preparation_time_minutes)
 SELECT id, 'Chef Hamburger', 'Chef special hamburger', 39.90, 30
 FROM categories_products WHERE name = 'Main Courses';
 
-INSERT INTO products (category_id, name, description, price, preparation_time_minutes)
+INSERT INTO products (categories_id, name, description, price, preparation_time_minutes)
 SELECT id, 'Pepsi', '2-liter Pepsi', 10.90, 5
 FROM categories_products WHERE name = 'Beverages';
 
-INSERT INTO products (category_id, name, description, price, preparation_time_minutes)
+INSERT INTO products (categories_id, name, description, price, preparation_time_minutes)
 SELECT id, 'Pudding', 'A plate with pudding', 14.90, 10
 FROM categories_products WHERE name = 'Desserts';

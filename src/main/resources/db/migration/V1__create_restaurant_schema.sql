@@ -36,7 +36,7 @@ CREATE INDEX idx_products_categories ON products(categories_id);
 
 CREATE TABLE orders (
     id UUID PRIMARY KEY,
-    table_id BIGINT NOT NULL REFERENCES tables(id),
+    table_id UUID NOT NULL REFERENCES tables(id),
     date_opening TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
     date_closing TIMESTAMP,
     status VARCHAR(20) NOT NULL DEFAULT 'OPEN',
@@ -76,7 +76,7 @@ CREATE TABLE payments (
     payment_date TIMESTAMP,
     created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
     updated_at TIMESTAMP,
-    CHECK(payment_method IN ('CREDIT_CARD', 'DEBIT_CARD', 'PIX', 'CASH'))
+    CHECK(payment_method IN ('CREDIT_CARD', 'DEBIT_CARD', 'PIX', 'CASH')),
     CHECK(status IN ('PENDING', 'APPROVED', 'REJECTED', 'CANCELLED'))
 );
 
